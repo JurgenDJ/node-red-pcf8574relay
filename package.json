@@ -1,0 +1,41 @@
+{
+  "name": "node-red-contrib-i2c_relays",
+  "version": "0.0.2",
+  "description": "A Node-RED node to switch relays via i2c behind a pcf8574",
+  "dependencies": {
+    "i2c-bus": "^1.2.2"
+  },
+  "devDependencies": {
+    "node-red":"^0.18.4",
+    "node-red-node-test-helper": "^0.1.6"
+  },
+  "main": "i2c_relays/i2c_relays.js",
+  "scripts": {
+    "test": "mocha \"test/**/*_spec.js\""
+  },
+  "license": "Apache-2.0",
+  "keywords": [
+    "node-red-contrib-i2c_relays",
+    "raspberry pi",
+    "iot",
+    "i2c"
+  ],
+    "repository": {
+    "type": "git",
+    "url": "https://github.com/nielsnl68/node-red-contrib-i2c"
+  },
+  "node-red": {
+    "nodes": {
+      "ic2 relay": "i2c_relays/i2c_relays.js"
+    }
+  },
+  "author": {
+    "name": "Jurgen De Jonghe",
+    "email": "jurgen@myteam.be",
+    "url": "https://github.com/JurgenDJ/node-red-pcf8574relay"
+  },
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": ""
+  }
+}

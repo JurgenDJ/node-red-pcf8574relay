@@ -1,0 +1,81 @@
+<script type="text/x-red" data-template-name="i2c relay">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-tips">Switch relays through a i2c with pcf8574</div>
+    <div class="form-row">
+        <label for="node-input-address"><i class="fa fa-microchip"></i> I2C Bus Address</label>
+        <input type="number" id="node-input-address" placeholder="[msg.address]" min=3 max=127>
+    </div>
+    <div class="form-row">
+        <label for="node-input-switchIndex"><i class="fa fa-lightbulb-o"></i>Switch Index</label>
+        <input type="number" id="node-input-switchIndex" placeholder="[msg.switchIndex]" min=0 max=7>
+    </div>    
+</script>
+
+<script type="text/x-red" data-help-name="i2c relay">
+    <p>Reads 0 or 1 from msg.payload,
+    switches de conifured switch on the configured address,
+    keeping all the other relays behind the same pcf8574 address the same</p>
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('i2c relay',{
+        category: 'i2c bus',
+        defaults: {
+            name: {value:""},
+            address: {value:32,required:true},
+            switchIndex : {value:0, required:true},
+            
+        },
+        color:"#E9967A",
+        inputs:1,
+        outputs:1,
+        icon: "light.png",
+        label: function() { return this.name||'i2c relay ('+this.address+"/"+this.switchIndex+")"; },
+        labelStyle: function() { return this.name?"node_label_italic":""; }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="pulse">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-delay"><i class="fa fa-microchip"></i> I2C Bus Address</label>
+        <input type="number" id="node-input-delay" placeholder="[msg.delay]" min=3 max=127>
+    </div>
+    <div class="form-row">
+        <label for="node-input-pulseOn"><i class="fa fa-lightbulb-o"></i>Pulse on</label>
+        <input type="number" id="node-input-pulseOn" placeholder="[msg.pulseOn]">
+    </div>    
+    <div class="form-row">
+        <label for="node-input-pulseOff"><i class="fa fa-lightbulb-o"></i>Pulse off</label>
+        <input type="number" id="node-input-pulseOff" placeholder="[msg.pulseOff]">
+    </div>    
+</script>
+
+<script type="text/x-red" data-help-name="pulse">
+    <p>passes the pulseOn value immediately</p>
+    <p>and emits a second message after the preset delay with the pulseOff value</p>
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('pulse',{
+        category: 'i2c bus',
+        defaults: {
+            name: {value:""},
+            delay: {value:250,required:true},
+            pulseOn : {value:1, required:true},
+            pulseOff : {value:0, required:true},
+        },
+        color:"#E9967A",
+        inputs:1,
+        outputs:1,
+        icon: "pulse.png",
+        label: function() { return this.name||'pulse('+this.delay+')'; },
+        labelStyle: function() { return this.name?"node_label_italic":""; }
+    });
+</script>
