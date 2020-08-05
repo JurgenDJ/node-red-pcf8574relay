@@ -5,14 +5,9 @@ This node operates on the /dev/i2c-1 (Raspberry pi 2 or up.)
 
 It was started as a clone of the node-red-contrib-i2c library written by Niels v.d. Spek: [nielsnl68/node-red-contrib-i2c](https://github.com/nielsnl68/node-red-contrib-i2c.git)
 
-Its purpuse is to drive relays with a pcf8574 I/O expander
+Its purpose is to drive relays with a pcf8574 I/O expander
 
 todo: add documentation on the hardware setup
-
-Usage
------
-
-the node 
 
 #### Configuration
 The first step is to configure the pcf8574 by setting its hardware address, the the switch index you want the node to operate on.
